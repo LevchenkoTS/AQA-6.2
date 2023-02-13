@@ -39,5 +39,27 @@ public class DataHelper {
     public static Card getSecondCard() {
         return new Card("5559 0000 0000 0002", "**** **** **** 0002");
     }
+
+    public static Card getCardByNumberOnPage(int numberOnPage) {
+        Card card = null;
+        if (numberOnPage == 1) {
+            card = getFirstCard();
+        }
+        if (numberOnPage == 2) {
+            card = getSecondCard();
+        }
+        return card;
+    }
+
+    public static Card getCardByNumber(String cardFromNumber) {
+        Card card = null;
+        if (cardFromNumber.equals("5559 0000 0000 0001")) {
+            card = getFirstCard();
+        }
+        if (cardFromNumber.equals("5559 0000 0000 0002")) {
+            card = getSecondCard();
+        }
+        return card;
+    }
 }
 

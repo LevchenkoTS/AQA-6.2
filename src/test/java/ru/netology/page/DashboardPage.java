@@ -4,6 +4,7 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 import lombok.val;
+import ru.netology.data.DataHelper;
 
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.withText;
@@ -19,8 +20,8 @@ public class DashboardPage {
         heading.shouldBe(visible);
     }
 
-    public int getCardBalance(String id) {
-        val cardBalance = cards.findBy(Condition.text(id)).text();
+    public int getCardBalance(DataHelper.Card card) {
+        val cardBalance = cards.findBy(Condition.text(card.getSecretCardId())).text();
         return extractBalance(cardBalance);
     }
 
@@ -32,8 +33,8 @@ public class DashboardPage {
         return Integer.parseInt(value);
     }
 
-    public TransferPage chooseCard(String id) {
-        val button = cards.findBy(Condition.text(id));
+    public TransferPage chooseCard(DataHelper.Card card) {
+        val button = cards.findBy(Condition.text(card.getSecretCardId()));
         button.$("button[data-test-id='action-deposit']").click();
         return page(TransferPage.class);
     }

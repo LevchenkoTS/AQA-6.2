@@ -14,11 +14,15 @@ public class TransferPage {
     @FindBy(css = "button[data-test-id=action-transfer]")
     private SelenideElement submitButton;
 
-    public DashboardPage moneyTransfer(String amount, String id) {
+    public DashboardPage moneyTransfer(String amount, DataHelper.Card card) {
         amountField.setValue(amount);
-        fromField.setValue(id);
+        fromField.setValue(card.getCardId());
         submitButton.click();
         return page(DashboardPage.class);
 
+    }
+    public DashboardPage makeValidTransfer(String amountToTransfer, DataHelper.Card card) {
+        moneyTransfer(amountToTransfer, card);
+        return new DashboardPage();
     }
 }
