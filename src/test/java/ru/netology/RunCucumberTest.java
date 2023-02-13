@@ -8,5 +8,5 @@ import org.junit.runner.RunWith;
         plugin = {"pretty", "summary"},
         features = {"src/test/resources/features"},
         glue = {"ru.netology.steps"})
-public class CucumberTest {
+public class RunCucumberTest {
 }
